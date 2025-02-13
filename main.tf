@@ -12,22 +12,19 @@ provider "aws" {
   secret_key = var.secret_key
 }
 resource "aws_instance" "myec2" {
- 
   ami           = var.my_ami
   instance_type = "t2.micro"
   tags = {
     Name = "myinstance "
   }
-  key_name = "mytf-key"
-provisioner "local-exec" {
-   command = "echo ${aws_instance.myec2.public_ip} > ip.txt"
-}
 }
 variable "my_region" {
-  type = string
+   type = string
   default = "us-east-1"
 }
-varible "access_key" { }
-varible "secret_key" { } 
+variable "access_key" { }
+variable "secret_key" { }
+variable "my_ami" {
    type = string
-   default = "ami-085ad6ae776d8f09c"
+   default = "ami-0c50b6f7dc3701ddd"
+}
